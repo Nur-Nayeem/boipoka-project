@@ -40,7 +40,7 @@ const Navbar = () => {
     </>
     return (
         <header className='shadow-2xs py-5'>
-            <nav className='container mx-auto px-2.5 flex justify-between items-center'>
+            <nav className='max-w-[1280px] mx-auto px-2.5 flex justify-between items-center'>
                 <Link to="/">
                     <h1 className='font-bold text-3xl text-[#131313]'>Book Vibe</h1>
                 </Link>
