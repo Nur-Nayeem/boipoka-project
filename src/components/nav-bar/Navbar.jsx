@@ -2,22 +2,6 @@ import { Menu, X } from 'lucide-react'
 import React, { useState } from 'react'
 
 import { Link, NavLink } from 'react-router'
-const navLinks = [
-    {
-        path: "/",
-        name: "Home"
-    },
-    {
-        path: "/listen-books",
-        name: "Listed Books"
-    },
-    {
-        path: "/page-to-read",
-        name: "Pages to Read"
-    },
-
-]
-
 
 const Navbar = () => {
     const [toggle, setToggle] = useState(false)
@@ -27,7 +11,7 @@ const Navbar = () => {
                 <span className={`text-lg text-[#13131380] border-1 border-white hover:border-[#23BE0A] hover:text-[#23BE0A] hover:font-semibold py-3 px-4 rounded-lg  ${isActive ? "active" : " "}`}>Home</span>
             )}
         </NavLink>
-        <NavLink to='/listen-books'>
+        <NavLink to='/listed-books'>
             {({ isActive }) => (
                 <span className={`text-lg text-[#13131380] border-1 border-white hover:border-[#23BE0A] hover:text-[#23BE0A] hover:font-semibold py-3 px-4 rounded-lg  ${isActive ? "active" : " "}`}>Listed Books</span>
             )}
@@ -72,6 +56,8 @@ const Navbar = () => {
                     <button className='py-4 px-6 bg-[#23BE0A] text-white text-lg font-semibold rounded-lg cursor-pointer'>Sign In</button>
                     <button className='py-4 px-6 bg-[#59C6D2] text-white text-lg font-semibold rounded-lg cursor-pointer'>Sign Up</button>
                 </div>
+
+
 
             </nav>
         </header>

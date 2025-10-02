@@ -2,9 +2,9 @@ import React from 'react'
 import { createBrowserRouter } from 'react-router'
 import App from '../App'
 import Home from '../Pages/Home'
-import ListenBooks from '../Pages/ListenBooks'
 import PageToRead from '../Pages/PageToRead'
 import BookDetails from '../components/bookDetails/BookDetails'
+import ListedBooks from '../Pages/ListedBooks'
 
 export const router = createBrowserRouter([
     {
@@ -13,12 +13,11 @@ export const router = createBrowserRouter([
         children: [
             {
                 index: true,
-                loader: () => fetch('booksData.json'),
                 Component: Home
             },
             {
-                path: "listen-books",
-                Component: ListenBooks,
+                path: "listed-books",
+                Component: ListedBooks,
             },
             {
                 path: "page-to-read",

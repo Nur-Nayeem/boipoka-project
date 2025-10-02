@@ -1,7 +1,7 @@
 import React, { Suspense, use, useEffect, useState } from 'react'
 import Book from './Book'
 
-const Books = ({ data }) => {
+const Books = () => {
     const [allBooks, setAllBooks] = useState([]);
 
     useEffect(() => {
