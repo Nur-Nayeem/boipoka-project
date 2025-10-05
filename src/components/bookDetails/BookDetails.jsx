@@ -1,5 +1,6 @@
 import React from 'react'
 import { useLoaderData, useOutletContext, useParams } from 'react-router'
+import { toast } from 'react-toastify';
 import { addToReadOrWithList } from '../../utility/storageDB';
 
 const BookDetails = () => {
@@ -11,9 +12,11 @@ const BookDetails = () => {
 
     const handleReadList = (id) => {
         addToReadOrWithList(id, "readList");
+        toast.success("Add mark as Read")
     }
     const handleWishList = (id) => {
         addToReadOrWithList(id, "wishList");
+        toast.success("added to Wish list ")
     }
 
     return (
