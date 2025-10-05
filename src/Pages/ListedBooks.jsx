@@ -1,7 +1,8 @@
 import { ChevronDown } from 'lucide-react'
-import { useState } from 'react'
+import { Suspense, useState } from 'react'
 import ReadBooks from '../components/listedBooks/ReadBooks';
 import WishBooks from '../components/listedBooks/WishBooks';
+import { useLoaderData } from 'react-router';
 
 
 const ListedBooks = () => {
@@ -18,6 +19,10 @@ const ListedBooks = () => {
         setRead(false)
         setCategoryToggle(false)
     }
+    const data = fetch("booksData.json").then(res => res.json())
+    console.log(data);
+
+    // const data = useLoaderData();
     return (
         <div className='px-2.5'>
             <h1 className='bg-[#13131310] text-[#131313] font-bold text-3xl py-8 text-center'>Books</h1>
@@ -42,11 +47,13 @@ const ListedBooks = () => {
                     <button onClick={handleWish} className={`cursor-pointer py-3.5 px-4 text-lg  border-[#13131330] rounded-t-xl ${wish ? ' border-1 border-b-0 text-[#13131395] ' : 'border-0 border-b-1 text-[#13131350]'} `}>Wishlist Books</button>
                     <div className='flex-1 border-b-1 border-[#13131330]'></div>
                 </div>
-                <div>
-                    {
-                        categoryTOggle ? <ReadBooks /> : <WishBooks />
-                    }
-                </div>
+                <Suspense fallback={<span>loading...</span>}>
+                    <div>
+                        {
+                            categoryTOggle ? <ReadBooks data={data} /> : <WishBooks data={data} />
+                        }
+                    </div>
+                </Suspense>
             </div>
 
 
