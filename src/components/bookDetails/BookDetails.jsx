@@ -1,5 +1,6 @@
 import React from 'react'
 import { useLoaderData, useOutletContext, useParams } from 'react-router'
+import { addToReadOrWithList } from '../../utility/storageDB';
 
 const BookDetails = () => {
     const { id } = useParams();
@@ -8,10 +9,12 @@ const BookDetails = () => {
     const detailsBook = data.find(book => book.bookId === bookId);
     const { bookName, image, author, category, tags, rating, review, totalPages, publisher, yearOfPublishing } = detailsBook;
 
-
-    const { handleAddToList, handleaddToWiahList } = useOutletContext();
-
-
+    const handleReadList = (id) => {
+        addToReadOrWithList(id, "readList");
+    }
+    const handleWishList = (id) => {
+        addToReadOrWithList(id, "wishList");
+    }
 
     return (
         <div className='flex px-2.5 flex-col lg:flex-row gap-12 my-4'>
@@ -55,8 +58,8 @@ const BookDetails = () => {
                     </tbody>
                 </table>
                 <div className='flex items-center gap-5 my-8'>
-                    <button onClick={() => handleAddToList(detailsBook)} className='border-1 py-4 px-6 border-[#13131330]  text-[#131313] text-lg font-semibold rounded-lg cursor-pointer'>Read</button>
-                    <button onClick={() => handleaddToWiahList(detailsBook)} className='py-4 px-6 bg-[#50B1C9] text-white text-lg font-semibold rounded-lg cursor-pointer'>Wishlist</button>
+                    <button onClick={() => handleReadList(bookId)} className='border-1 py-4 px-6 border-[#13131330]  text-[#131313] text-lg font-semibold rounded-lg cursor-pointer'>Read</button>
+                    <button onClick={() => handleWishList(bookId)} className='py-4 px-6 bg-[#50B1C9] text-white text-lg font-semibold rounded-lg cursor-pointer'>Wishlist</button>
 
                 </div>
 
@@ -66,3 +69,5 @@ const BookDetails = () => {
 }
 
 export default BookDetails
+
+

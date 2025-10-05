@@ -1,3 +1,4 @@
+import { toast } from 'react-toastify';
 const getStoredItems = (key) => {
     const storedData = localStorage.getItem(key);
     if (storedData) {
@@ -12,7 +13,7 @@ const getStoredItems = (key) => {
 const addToReadOrWithList = (id, key) => {
     const storedData = getStoredItems(key);
     if (storedData.includes(id)) {
-        alert("already exist");
+        toast.error("already exist");
     }
     else {
         storedData.push(id);

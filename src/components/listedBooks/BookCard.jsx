@@ -1,8 +1,10 @@
 import { Locate, Notebook, UsersRound } from 'lucide-react';
 import React from 'react'
+import { useNavigate } from 'react-router';
 
 const BookCard = ({ book }) => {
-    const { bookName, image, author, category, tags, rating, review, totalPages, publisher, yearOfPublishing } = book;
+    const navigate = useNavigate()
+    const { bookId, bookName, image, author, category, tags, rating, review, totalPages, publisher, yearOfPublishing } = book;
     return (
         <div className='p-6 flex flex-col px-2.5 md:flex-row items-center gap-6 border-1 border-[#13131315] my-6'>
             <figure className='bg-[#F3F3F3] rounded-2xl py-8 px-12 flex justify-center items-center'>
@@ -38,7 +40,7 @@ const BookCard = ({ book }) => {
                 <div className='flex items-center flex-wrap gap-5 my-3'>
                     <div className='py-3 px-5 rounded-4xl text-[#FFAC33] bg-[#FFAC3315]'>Category: Classic</div>
                     <div className='py-3 px-5 rounded-4xl text-[#FFAC33] bg-[#FFAC3315]'>Rating: 4.5</div>
-                    <button className='py-3 px-5 rounded-4xl text-white bg-[#23BE0A]'>View Details</button>
+                    <button className='py-3 px-5 rounded-4xl text-white bg-[#23BE0A]' onClick={() => navigate(`../book-details/${bookId}`)} >View Details</button>
                 </div>
             </div>
         </div>
